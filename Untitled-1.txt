@@ -1,0 +1,19 @@
+WanderList App
+
+Purpose:
+Users can log in the following information to store 
+- date
+- location
+- people you went with
+- restaurants visited
+- places visited- food tried
+- highlights
+- photos (?)
+
+
+Psuedo Code:
+// Users input information about their trip into the input fields
+// users' information gets stored into firebase
+
+// users can go into content page to view previous travels
+    // categorized by date and location
