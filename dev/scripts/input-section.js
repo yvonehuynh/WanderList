@@ -129,17 +129,17 @@ export default class Inputs extends React.Component {
                         {Object.keys(this.state.allTrips).map((travels, i) => {
                          /*    const myTravel = this.state[travels] */
                             console.log(this.state.allTrips[travels].group, "hello")
-                            const allTravels = this.state.allTrips[travels]
+                            const allTravels = this.state.allTrips[travels];
                             return (
-                                <p>{this.state.allTrips[travels].group}</p>
+                                <div>
+                                    <h2>{allTravels.date}</h2>
+                                    <p>Places Visited: {allTravels.places}</p>
+                                    <p>Went With: {allTravels.group}</p>
+                                    <p>Restaurants Tried: {allTravels.restaurants}</p>
+                                    <p>HIghlights of Trip: {allTravels.highlights}</p>
+                                </div>
                             )
-/*                             for (let items in this.state.allTrips[travels]) {
-                                return (
-                                    <div key={i}>
-                                        {travels[items]}
-                                    </div>
-                                );
-                            } */
+
                     })}
                     </div>
                 </div>
