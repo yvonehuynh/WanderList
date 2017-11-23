@@ -17,3 +17,9 @@ Psuedo Code:
 
 // users can go into content page to view previous travels
     // categorized by date and location
+
+Goals:
+Wednesday:
+Get functionality down for the form:
+    - allow things to be displayed on the page after users input text
+    - build skeleton structure of the content page via component
