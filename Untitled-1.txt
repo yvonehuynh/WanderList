@@ -34,3 +34,13 @@ Get functionality down for the form:
     Questions:
         1) how to display object onto the page with the above key value pairs
         2) how to fix the input=date issue
+
+Thursday:
+- add delete functionality into App
+- create other componenents (basic structure)
+- fix form
+
+    To be finished by Friday:
+        1) basic functionality
+        2) final form
+        3) content page structured

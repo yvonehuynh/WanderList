@@ -39,6 +39,7 @@ export default class Inputs extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.addTravels = this.addTravels.bind(this);
+        this.removeEntry = this.removeEntry.bind(this);
     }
     componentDidMount(){
         const dbRef = firebase.database().ref();
@@ -72,10 +73,18 @@ export default class Inputs extends React.Component {
     }   
     addTravels(e){
         e.preventDefault();
-        const newState = Object.assign(this.state)
+/*         const newState = Object.assign(this.state) */
+        const newTrip = {
+            location: this.state.location,
+            date: this.state.date,
+            group: this.state.group,
+            places: this.state.places,
+            restaurants: this.state.restaurants,
+            highlights: this.state.highlights
+        }
         const travelDate = this.state["date"];
         // travel date = this.state.date
-        console.log(newState)       
+        console.log(newTrip)       
          /* -------- */
         this.setState({
             location: '',
@@ -87,9 +96,17 @@ export default class Inputs extends React.Component {
         })
 
         const usersRef = firebase.database().ref();
-/*         const usersRef = firebase.database().ref("/users"); */
-        usersRef.push(newState)
+
+        usersRef.push(newTrip)
         /* -------- */
+    }
+
+    removeEntry(key){
+        console.log(key)
+// ref to location of that object in the database
+// call the remove method
+        const removeMe = firebase.database().ref(key);
+        removeMe.remove();
     }
     render() {
         return (
@@ -99,7 +116,7 @@ export default class Inputs extends React.Component {
                         <label htmlFor="location-travelled">Location Travelled</label>
                         <input name="location" type="text" id="location-travelled" value={this.state.location} onChange={this.handleChange}/>
                         <label htmlFor="date-travelled">Date</label>
-                        <input type="date" name="date" value={this.state.date} onChange={this.handleChange}/>
+                        <input type="date" name="date" required="true" value={this.state.date} onChange={this.handleChange}/>
                     </fieldset>
 
                     <fieldset className="group-mates-input">
@@ -118,6 +135,7 @@ export default class Inputs extends React.Component {
                         <input name="restaurants" type="text" id="res-visited" value={this.state.restaurants} onChange={this.handleChange}/>
                         <textarea name="restaurants" id="res-textarea" cols="30" rows="10"></textarea>
                     </fieldset>
+
                     <fieldset className="highlights-input">
                         <label htmlFor="highlights">Highlights of Trip</label>
                         <textarea name="highlights" id="highlight-textarea" cols="30" rows="10" value={this.state.highlights} onChange={this.handleChange}></textarea>
@@ -126,21 +144,22 @@ export default class Inputs extends React.Component {
                 </form>
                 <div className="contents-container">
                     <div>
-                        {Object.keys(this.state.allTrips).map((travels, i) => {
-                         /*    const myTravel = this.state[travels] */
+                     {Object.keys(this.state.allTrips).map((travels, i) => {
+
                             console.log(this.state.allTrips[travels].group, "hello")
                             const allTravels = this.state.allTrips[travels];
                             return (
-                                <div>
+                                <div key={allTravels}>
                                     <h2>{allTravels.date}</h2>
                                     <p>Places Visited: {allTravels.places}</p>
                                     <p>Went With: {allTravels.group}</p>
                                     <p>Restaurants Tried: {allTravels.restaurants}</p>
                                     <p>HIghlights of Trip: {allTravels.highlights}</p>
+                                    <button onClick={()=>this.removeEntry(travels)}>Delete</button>
                                 </div>
                             )
 
-                    })}
+                            })} 
                     </div>
                 </div>
             </div>
@@ -150,5 +169,5 @@ export default class Inputs extends React.Component {
 
 
 /* 
-key={this.sstate.allTrips[[travels]]}
+key={this.sstate.allTrips[travels]}
 id */
