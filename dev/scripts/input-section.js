@@ -29,10 +29,18 @@ export default class Inputs extends React.Component {
     constructor(){
         super();
         this.state ={
+/*                 location: '',
+                date: '',
+                group: '',
+                places: '',
+                restaurants: '',
+                highlights: '',
+                allTrips: {} */
                 location: '',
                 date: '',
                 group: '',
                 places: '',
+                places2: '',
                 restaurants: '',
                 highlights: '',
                 allTrips: {}
@@ -52,16 +60,10 @@ export default class Inputs extends React.Component {
 
             for (let travelKey in travelData) {
                 travelArray.push({
-/*                     date: travelKey,
-                    data: travelData[travelKey],
-                    travelInfo: travelData[travelKey] */
                 });
             }
             this.setState({
                 allTrips: travelData,
-/*                 date: travekLey,
-                date: travelData[travekLey],
-                travelInfo: travelData[travelKey] */
             })
         })
     }
@@ -75,24 +77,37 @@ export default class Inputs extends React.Component {
         e.preventDefault();
 /*         const newState = Object.assign(this.state) */
         const newTrip = {
-            location: this.state.location,
+/*             location: this.state.location,
             date: this.state.date,
             group: this.state.group,
             places: this.state.places,
             restaurants: this.state.restaurants,
+            highlights: this.state.highlights */
+            location: this.state.location,
+            date: this.state.date,
+            group: this.state.group,
+            places: this.state.places,
+            places2: this.state.places2,
+            restaurants: this.state.restaurants,
             highlights: this.state.highlights
+
         }
-        const travelDate = this.state["date"];
-        // travel date = this.state.date
-        console.log(newTrip)       
+        const travelDate = this.state["date"];  
          /* -------- */
         this.setState({
-            location: '',
+/*             location: '',
             date: '',
             group: '',
             places: '',
             restaurants: '',
-            highlights: ''
+            highlights: '' */
+            location: '',
+            date: '',
+            group: '',
+            places: '',
+            places2: '',
+            restaurants: '',
+            highlights: '',
         })
 
         const usersRef = firebase.database().ref();
@@ -127,7 +142,7 @@ export default class Inputs extends React.Component {
                     <fieldset className="places-input">
                         <label htmlFor="places-visited">Places You Visited</label>
                         <input name="places" type="text" id="places-visited1" value={this.state.places} onChange={this.handleChange}/>
-                        <textarea name="places" id="places-visited-textarea1" cols="30" rows="10"></textarea>
+                        <textarea name="places2" id="places-visited-textarea1" value={this.state.places2} onChange={this.handleChange}></textarea>
                     </fieldset>
 
                     <fieldset className="restaurants-input">
@@ -155,6 +170,7 @@ export default class Inputs extends React.Component {
                                     <p>Went With: {allTravels.group}</p>
                                     <p>Restaurants Tried: {allTravels.restaurants}</p>
                                     <p>HIghlights of Trip: {allTravels.highlights}</p>
+                                    <p>Places2: {allTravels.places2}</p>
                                     <button onClick={()=>this.removeEntry(travels)}>Delete</button>
                                 </div>
                             )
@@ -167,7 +183,3 @@ export default class Inputs extends React.Component {
     }
 }
 
-
-/* 
-key={this.sstate.allTrips[travels]}
-id */
