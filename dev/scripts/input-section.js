@@ -51,12 +51,16 @@ export default class Inputs extends React.Component {
 
             for (let travelKey in travelData) {
                 travelArray.push({
-                    date: travelKey,
-                    data: travelData[travelKey]
+/*                     date: travelKey,
+                    data: travelData[travelKey],
+                    travelInfo: travelData[travelKey] */
                 });
             }
             this.setState({
-                allTrips: travelArray
+                allTrips: travelData,
+/*                 date: travekLey,
+                date: travelData[travekLey],
+                travelInfo: travelData[travelKey] */
             })
         })
     }
@@ -82,7 +86,7 @@ export default class Inputs extends React.Component {
             highlights: ''
         })
 
-        const usersRef = firebase.database().ref(travelDate);
+        const usersRef = firebase.database().ref();
 /*         const usersRef = firebase.database().ref("/users"); */
         usersRef.push(newState)
         /* -------- */
@@ -124,12 +128,18 @@ export default class Inputs extends React.Component {
                     <div>
                         {Object.keys(this.state.allTrips).map((travels, i) => {
                          /*    const myTravel = this.state[travels] */
-                            console.log(travels, "hello")
+                            console.log(this.state.allTrips[travels].group, "hello")
+                            const allTravels = this.state.allTrips[travels]
                             return (
-                                <div key={i}>
-                                    {travels}
-                                </div>
+                                <p>{this.state.allTrips[travels].group}</p>
                             )
+/*                             for (let items in this.state.allTrips[travels]) {
+                                return (
+                                    <div key={i}>
+                                        {travels[items]}
+                                    </div>
+                                );
+                            } */
                     })}
                     </div>
                 </div>
@@ -139,4 +149,6 @@ export default class Inputs extends React.Component {
 }
 
 
-
+/* 
+key={this.sstate.allTrips[[travels]]}
+id */
