@@ -34,13 +34,31 @@ export default class Inputs extends React.Component {
                 group: '',
                 places: '',
                 restaurants: '',
-                highlights: ''
+                highlights: '',
+                allTrips: {}
         }
         this.handleChange = this.handleChange.bind(this);
         this.addTravels = this.addTravels.bind(this);
     }
     componentDidMount(){
+        const dbRef = firebase.database().ref();
         
+        dbRef.on("value",(firebaseData) => {
+            console.log(firebaseData.val());
+
+            const travelArray = [];
+            const travelData = firebaseData.val();
+
+            for (let travelKey in travelData) {
+                travelArray.push({
+                    date: travelKey,
+                    data: travelData[travelKey]
+                });
+            }
+            this.setState({
+                allTrips: travelArray
+            })
+        })
     }
     handleChange(e){
         console.log(e.target.value);
@@ -51,17 +69,22 @@ export default class Inputs extends React.Component {
     addTravels(e){
         e.preventDefault();
         const newState = Object.assign(this.state)
-        /* -------- */
+        const travelDate = this.state["date"];
+        // travel date = this.state.date
+        console.log(newState)       
+         /* -------- */
         this.setState({
-                location: '',
-                date: '',
-                group: '',
-                places: '',
-                restaurants: '',
-                highlights: ''
+            location: '',
+            date: '',
+            group: '',
+            places: '',
+            restaurants: '',
+            highlights: ''
         })
-        const dbRef = firebase.database().ref();
-        dbRef.push(newState)
+
+        const usersRef = firebase.database().ref(travelDate);
+/*         const usersRef = firebase.database().ref("/users"); */
+        usersRef.push(newState)
         /* -------- */
     }
     render() {
@@ -72,7 +95,7 @@ export default class Inputs extends React.Component {
                         <label htmlFor="location-travelled">Location Travelled</label>
                         <input name="location" type="text" id="location-travelled" value={this.state.location} onChange={this.handleChange}/>
                         <label htmlFor="date-travelled">Date</label>
-                        <input name="date" type="date" id="date-travelled" value={this.state.date}/>
+                        <input type="date" name="date" value={this.state.date} onChange={this.handleChange}/>
                     </fieldset>
 
                     <fieldset className="group-mates-input">
@@ -98,15 +121,17 @@ export default class Inputs extends React.Component {
                     <input type="submit"/>
                 </form>
                 <div className="contents-container">
-                    <ul>
-                        {Object.keys(this.state).map((travels) => {
-                            const myTravel = this.state[travels]
+                    <div>
+                        {Object.keys(this.state.allTrips).map((travels, i) => {
+                         /*    const myTravel = this.state[travels] */
+                            console.log(travels, "hello")
                             return (
-                            <li key={travels}>
-                                : {myTravel}
-                            </li>)
+                                <div key={i}>
+                                    {travels}
+                                </div>
+                            )
                     })}
-                    </ul>
+                    </div>
                 </div>
             </div>
         );
@@ -115,30 +140,3 @@ export default class Inputs extends React.Component {
 
 
 
-
-
-
-{/*                     {this.state.map((travels) => {
-                        return 
-                            <li key={travels.date}>
-                              Summary: {travels}
-                            </li>
-                                <li key={travels.date}>
-                             Location: {travels.location}
-                            </li>
-                            <li key={travels.date}>
-                              Date:  {travels.date}
-                            </li>
-                            <li key={travels.date}>
-                             Who you went with:   {travels.groups}
-                            </li>
-                            <li key={travels.date}>
-                             Places Visited   {travels.places}
-                            </li>
-                            <li key={travels.date}>
-                             Restuarants tried:   {travels.restaurants}
-                            </li>
-                            <li key={travels.date}>
-                                HIghlights: {travels.highlights}
-                            </li>
-                    })}; */}

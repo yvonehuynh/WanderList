@@ -23,3 +23,14 @@ Wednesday:
 Get functionality down for the form:
     - allow things to be displayed on the page after users input text
     - build skeleton structure of the content page via component
+
+    What I want the data to be displayed as:
+    property: value
+    location: Cuba
+    place:  the beach
+    restaurants: etc.
+    highlights: etc.
+
+    Questions:
+        1) how to display object onto the page with the above key value pairs
+        2) how to fix the input=date issue
