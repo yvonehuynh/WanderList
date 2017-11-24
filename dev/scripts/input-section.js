@@ -51,6 +51,7 @@ export default class Inputs extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.addTravels = this.addTravels.bind(this);
         this.removeEntry = this.removeEntry.bind(this);
+        this.uploadPhoto = this.uploadPhoto.bind(this);
     }
     componentDidMount(){
         const dbRef = firebase.database().ref();
@@ -71,7 +72,7 @@ export default class Inputs extends React.Component {
         })
 
         /////////////////////
-        firebase.database().ref().on('value', (res) => {
+/*         firebase.database().ref().on('value', (res) => {
             const userData = res.val();
             const dataArray = [];
             for (let objKey in userData) {
@@ -82,7 +83,7 @@ export default class Inputs extends React.Component {
                 posts: dataArray,
             })
         });
-    }
+    } */
 
 
         //////////////////
@@ -169,7 +170,6 @@ export default class Inputs extends React.Component {
         });
 
     }
-
 
     //////////////
 
@@ -264,6 +264,9 @@ export default class Inputs extends React.Component {
                                             <p className="para">{allTravels.resDescription}</p>
                                             <h3 className="sub-heading">HIghlights</h3>
                                             <p className="para">{allTravels.highlights}</p>
+                                            <div>Photos:
+                                                <img src={allTravels.photo} alt=""/>
+                                            </div>
                                             <button onClick={() => this.removeEntry(travels)}>Delete</button> */
                                     </details>
                             )
