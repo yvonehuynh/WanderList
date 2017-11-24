@@ -12,6 +12,7 @@
 
 import React from "react";
 import reactDOM from "react-dom";
+import VietContent from "./view-contents";
 
 
 // Initialize Firebase
@@ -46,12 +47,15 @@ export default class Inputs extends React.Component {
                 resDescription: '',
                 highlights: '',
                 photo: '',
-                allTrips: {}
+                allTrips: {},
+                showForm: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.addTravels = this.addTravels.bind(this);
         this.removeEntry = this.removeEntry.bind(this);
         this.uploadPhoto = this.uploadPhoto.bind(this);
+        this.showMemories = this.showMemories.bind(this);
+        this.showInputs = this.showInputs.bind(this);
     }
     componentDidMount(){
         const dbRef = firebase.database().ref();
@@ -170,28 +174,40 @@ export default class Inputs extends React.Component {
         });
 
     }
+    showMemories() {
+        console.log("HELLO THERE");
+        this.setState({
+            showForm: true
+        })
+    }
 
+    showInputs(){
+        console.log("I AM HERE");
+        this.setState({
+            showForm: false
+        })
+    }
     //////////////
 
     render() {
-        return (
-            <div className="main-input-container">
-                <form action="" className="form-input" onSubmit={this.addTravels}>
+        let contentForm = (
+            <form action="" className="form-input" onSubmit={this.addTravels}>
+                <div className="form-container">
                     <fieldset className="date-location-input">
                         <label htmlFor="location-travelled">Destination</label>
-                        <input name="location" type="text" id="location-travelled" value={this.state.location} onChange={this.handleChange}/>
+                        <input name="location" type="text" id="location-travelled" value={this.state.location} onChange={this.handleChange} />
                         <label htmlFor="date-travelled">Date</label>
-                        <input type="date" name="date" required="true" value={this.state.date} onChange={this.handleChange}/>
+                        <input type="date" name="date" required="true" value={this.state.date} onChange={this.handleChange} />
                     </fieldset>
 
                     <fieldset className="group-mates-input">
                         <label htmlFor="travel-mates">Who did you go with?</label>
-                        <input name="group" type="text" id="travel-mates" value={this.state.group} onChange={this.handleChange}/>
+                        <input name="group" type="text" id="travel-mates" value={this.state.group} onChange={this.handleChange} />
                     </fieldset>
 
                     <fieldset className="places-input">
                         <label htmlFor="places-visited">Places You Visited</label>
-                        <input name="places" type="text" id="places-visited1" value={this.state.places} onChange={this.handleChange}/>
+                        <input name="places" type="text" id="places-visited1" value={this.state.places} onChange={this.handleChange} />
                     </fieldset>
 
                     <fieldset>
@@ -201,7 +217,7 @@ export default class Inputs extends React.Component {
 
                     <fieldset className="restaurants-input">
                         <label htmlFor="res-visited">Restuarants / Food Tried</label>
-                        <input name="restaurants" type="text" id="res-visited" value={this.state.restaurants} onChange={this.handleChange}/>
+                        <input name="restaurants" type="text" id="res-visited" value={this.state.restaurants} onChange={this.handleChange} />
                     </fieldset>
 
                     <fieldset>
@@ -215,65 +231,62 @@ export default class Inputs extends React.Component {
                         {/* ------------------- */}
                         <input type="file" accept="image/*" onChange={this.uploadPhoto} />
                         {/* -------------------- */}
-                    <input type="submit"/>
                     </fieldset>
-                </form>
-                <div className="contents-container">
-                     {Object.keys(this.state.allTrips).map((travels, i) => {
+                </div>
+                <input type="submit" />
+            </form>
+        );
+        let contentDisplay = (
+            <div className="contents-container">
+                {Object.keys(this.state.allTrips).map((travels, i) => {
 
-                            console.log(this.state.allTrips[travels].group, "hello")
-                            const allTravels = this.state.allTrips[travels];
-                            return (
-                                /*     <div className="date-selector-container">
-                                        <div className="date-selector">
-                                            <h3 className="sub-heading">{allTravels.date}</h3>
-                                        </div>
-                                    </div>
+                    console.log(this.state.allTrips[travels].group, "hello")
+                    const allTravels = this.state.allTrips[travels];
+                    return (
 
-                                    <div className="summary-container">
-                                        <h2>{allTravels.date}</h2>
-                                        <h3 className="sub-heading">Places Visited:</h3>
-                                        <p className="para">{allTravels.places}</p>
-                                        <h3 className="sub-heading">Description</h3>
-                                        <p className="para">{allTravels.placesDescription}</p>
-                                        <h3 className="sub-heading">Went With</h3>
-                                        <p className="para">{allTravels.group}</p>
-                                        <h3 className="sub-heading">Restaurants Tried</h3>
-                                        <p className="para">{allTravels.restaurants}</p>
-                                        <h3 className="sub-heading">Description</h3>
-                                        <p className="para">{allTravels.resDescription}</p>
-                                        <h3 className="sub-heading">HIghlights</h3>
-                                        <p className="para">{allTravels.highlights}</p>
-                                        <button onClick={() => this.removeEntry(travels)}>Delete</button> */
-
-                                       
-                  /*           </div>  */
-                                    <details>
-                                        <summary>
-                                        <h2>{allTravels.date}</h2>
-                                        </summary>
-                                            <h3 className="sub-heading">Places Visited:</h3>
-                                            <p className="para">{allTravels.places}</p>
-                                            <h3 className="sub-heading">Description</h3>
-                                            <p className="para">{allTravels.placesDescription}</p>
-                                            <h3 className="sub-heading">Went With</h3>
-                                            <p className="para">{allTravels.group}</p>
-                                            <h3 className="sub-heading">Restaurants Tried</h3>
-                                            <p className="para">{allTravels.restaurants}</p>
-                                            <h3 className="sub-heading">Description</h3>
-                                            <p className="para">{allTravels.resDescription}</p>
-                                            <h3 className="sub-heading">HIghlights</h3>
-                                            <p className="para">{allTravels.highlights}</p>
-                                            <div>Photos:
-                                                <img src={allTravels.photo} alt=""/>
-                                            </div>
-                                            <button onClick={() => this.removeEntry(travels)}>Delete</button> */
+                        <details>
+                            <summary>
+                                <h2>{allTravels.date}</h2>
+                            </summary>
+                            <h3 className="sub-heading">Places Visited:</h3>
+                            <p className="para">{allTravels.places}</p>
+                            <h3 className="sub-heading">Description</h3>
+                            <p className="para">{allTravels.placesDescription}</p>
+                            <h3 className="sub-heading">Went With</h3>
+                            <p className="para">{allTravels.group}</p>
+                            <h3 className="sub-heading">Restaurants Tried</h3>
+                            <p className="para">{allTravels.restaurants}</p>
+                            <h3 className="sub-heading">Description</h3>
+                            <p className="para">{allTravels.resDescription}</p>
+                            <h3 className="sub-heading">HIghlights</h3>
+                            <p className="para">{allTravels.highlights}</p>
+                            <div>Photos:
+                                                <img src={allTravels.photo} alt="" />
+                            </div>
+                            <button onClick={() => this.removeEntry(travels)}>Delete</button> */
                                     </details>
-                            )
-                            })} 
-                    </div>
+                    )
+                })}
+            </div>
+        )
+        return (
+            <div className="main-input-container">
+                <form className="greeting-container">
+                    <label  htmlFor="add">add memories</label>
+                    <input name="description" type="radio" className="add" id="add" onChange={this.showInputs}/> 
+                    <label htmlFor="view">view memories</label>
+                    <input name="description" type="radio" className="view" id="add" onChange={this.showMemories}/>
+                </form>
+                {this.state.showForm ? contentForm : contentDisplay}
             </div>
         );
     }
 }
+
+// app needs a method that is reponsible for setting the state is true or false
+
+// this method should be called on change, of radio buttons that live in the viewcontent
+
+// pass the method as a prop to the view content compoenent
+// inside viewcontent, we have an onchange listener on the forms, that calls this prop and passes the of what input is currently selected to the method which is on the app
 

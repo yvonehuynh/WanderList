@@ -5,11 +5,19 @@ form {
     margin: 0 auto;
     padding: 15px;
     border: 2px solid $border;
-    display: flex;
+/*     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: column; */
     height: 493px;
     background: $contentBackground;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 485px;
+    width: 100%;
 }
 
 fieldset {
@@ -50,4 +58,9 @@ input[type=submit] {
     color: white;
     width: 100%;
     margin-top: 8px;
+}
+
+input[type=file] {
+    width: 100%;
+    margin-top: 5px;
 }
