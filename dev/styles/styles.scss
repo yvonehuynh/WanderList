@@ -1,0 +1,25 @@
+@import "partials/setup";
+@import "partials/forms";
+@import "partials/content";
+@import "partials/colors";
+
+// General Styles
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: $bodyBackground;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+

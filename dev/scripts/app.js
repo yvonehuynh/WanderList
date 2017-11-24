@@ -5,10 +5,9 @@ import Inputs from "./input-section";
 class App extends React.Component {
     render() {
       return (
-        <div>
-          Hello
+        <div className="wrapper">
+          <h1>WanderList</h1>
           <Inputs />
-          <ul></ul>
         </div>
       )
     }
