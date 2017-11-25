@@ -115,7 +115,6 @@ export default class Inputs extends React.Component {
         this.state.photo = ''
         /* -------- */
 
-
     }
 
     removeEntry(key){
