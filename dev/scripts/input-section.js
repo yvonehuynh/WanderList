@@ -45,7 +45,9 @@ export default class Inputs extends React.Component {
                 photo: '',
                 allTrips: {},
                 showForm: '',
-                opacity: 1
+                opacity: 1,
+                defaultChecked: true,
+                checked: true
         }
         this.handleChange = this.handleChange.bind(this);
         this.addTravels = this.addTravels.bind(this);
@@ -79,6 +81,8 @@ export default class Inputs extends React.Component {
             [e.target.name]: e.target.value,
         })
     }   
+
+// Submit Form
     addTravels(e){
         e.preventDefault();
         const newTrip = {
@@ -105,7 +109,8 @@ export default class Inputs extends React.Component {
             resDescription: '',
             highlights: '',
             photo: '',
-            showForm: false
+            showForm: false,
+            checked: true
         })
 
         const usersRef = firebase.database().ref();
@@ -157,7 +162,7 @@ export default class Inputs extends React.Component {
         console.log("I AM HERE");
         this.setState({
             showForm: false,
-            opacity: 1
+            opacity: 1,
         })
     }
     //////////////
@@ -167,6 +172,7 @@ export default class Inputs extends React.Component {
             opacity: 0
         }
     }
+
     render() {
         let contentForm = (
             <form action="" className="form-input" onSubmit={this.addTravels} style={{styles, opacity: this.state.opacity}}>
@@ -253,7 +259,7 @@ export default class Inputs extends React.Component {
             <div className="main-input-container">
                 <form className="greeting-container">
                     <label htmlFor="view">View memories</label>
-                    <input name="view" type="radio" id="view" onChange={this.showInputs}/> 
+                    <input name="view" type="radio" id="view" onChange={this.showInputs} defaultChecked={this.state.checked}/> 
                     <label htmlFor="add">Add memories</label>
                     <input name="view" type="radio" id="add" onChange={this.showMemories}/>
                 </form>
