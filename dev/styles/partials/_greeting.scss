@@ -4,4 +4,9 @@ input[type=radio] {
 
 .greeting-container {
     display: flex;
+    justify-content: center;
+    color: black;
+    label {
+        font-size: 2.5rem;
+    }
 }

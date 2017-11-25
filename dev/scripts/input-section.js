@@ -14,6 +14,9 @@ import React from "react";
 import reactDOM from "react-dom";
 import ViewContent from "./view-contents";
 
+const styles = {
+    transition: 'opacity 2.3s ease-out'
+}
 
 // Initialize Firebase
 const config = {
@@ -31,13 +34,6 @@ export default class Inputs extends React.Component {
     constructor(){
         super();
         this.state ={
-/*                 location: '',
-                date: '',
-                group: '',
-                places: '',
-                restaurants: '',
-                highlights: '',
-                allTrips: {} */
                 location: '',
                 date: '',
                 group: '',
@@ -48,7 +44,8 @@ export default class Inputs extends React.Component {
                 highlights: '',
                 photo: '',
                 allTrips: {},
-                showForm: ''
+                showForm: '',
+                opacity: 1
         }
         this.handleChange = this.handleChange.bind(this);
         this.addTravels = this.addTravels.bind(this);
@@ -56,6 +53,7 @@ export default class Inputs extends React.Component {
         this.uploadPhoto = this.uploadPhoto.bind(this);
         this.showMemories = this.showMemories.bind(this);
         this.showInputs = this.showInputs.bind(this);
+        this.onHide = this.onHide.bind(this);
     }
     componentDidMount(){
         const dbRef = firebase.database().ref();
@@ -74,40 +72,16 @@ export default class Inputs extends React.Component {
                 allTrips: travelData,
             })
         })
-
-        /////////////////////
-/*         firebase.database().ref().on('value', (res) => {
-            const userData = res.val();
-            const dataArray = [];
-            for (let objKey in userData) {
-                userData[objKey].key = objKey;
-                dataArray.push(userData[objKey])
-            }
-            this.setState({
-                posts: dataArray,
-            })
-        });
-    } */
-
-
-        //////////////////
-    }
+     }
     handleChange(e){
         console.log(e.target.value);
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         })
     }   
     addTravels(e){
         e.preventDefault();
-/*         const newState = Object.assign(this.state) */
         const newTrip = {
-/*             location: this.state.location,
-            date: this.state.date,
-            group: this.state.group,
-            places: this.state.places,
-            restaurants: this.state.restaurants,
-            highlights: this.state.highlights */
             location: this.state.location,
             date: this.state.date,
             group: this.state.group,
@@ -122,12 +96,6 @@ export default class Inputs extends React.Component {
         const travelDate = this.state["date"];  
          /* -------- */
         this.setState({
-/*             location: '',
-            date: '',
-            group: '',
-            places: '',
-            restaurants: '',
-            highlights: '' */
             location: '',
             date: '',
             group: '',
@@ -182,21 +150,27 @@ export default class Inputs extends React.Component {
     showMemories() {
         console.log("HELLO THERE");
         this.setState({
-            showForm: true
+            showForm: true,
         })
     }
 
     showInputs(){
         console.log("I AM HERE");
         this.setState({
-            showForm: false
+            showForm: false,
+            opacity: 1
         })
     }
     //////////////
 
+    onHide(){
+        this.setState={
+            opacity: 0
+        }
+    }
     render() {
         let contentForm = (
-            <form action="" className="form-input" onSubmit={this.addTravels}>
+            <form action="" className="form-input" onSubmit={this.addTravels} style={{styles, opacity: this.state.opacity}}>
                 <div className="form-container">
                     <fieldset className="date-location-input">
                         <label htmlFor="location-travelled">Destination</label>
@@ -242,7 +216,7 @@ export default class Inputs extends React.Component {
             </form>
         );
         let contentDisplay = (
-            <div className="contents-container">
+            <div className="contents-container" style={{ styles, opacity: this.state.opacity }}>
                 {Object.keys(this.state.allTrips).map((travels, i) => {
 
                     console.log(this.state.allTrips[travels].group, "hello")
