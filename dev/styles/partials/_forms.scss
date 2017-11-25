@@ -1,13 +1,10 @@
 @import "./colors";
 
-form {
+.form-input {
     width: 71%;
     margin: 0 auto;
     padding: 15px;
     border: 2px solid $border;
-/*     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column; */
     height: 493px;
     background: $contentBackground;
 }
@@ -41,11 +38,6 @@ textarea {
     width: 276px;
 }
 
-
-/* input[type=date], label[htmlFor=date-travelled] {
-    display: inline-block;
-}
- */
 label {
     font-size: 1.9rem;
     margin-right: 7px;

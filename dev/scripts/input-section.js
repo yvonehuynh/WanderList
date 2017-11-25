@@ -12,7 +12,7 @@
 
 import React from "react";
 import reactDOM from "react-dom";
-import VietContent from "./view-contents";
+import ViewContent from "./view-contents";
 
 
 // Initialize Firebase
@@ -136,15 +136,18 @@ export default class Inputs extends React.Component {
             restaurants: '',
             resDescription: '',
             highlights: '',
-            photo: ''
-
+            photo: '',
+            showForm: false
         })
 
         const usersRef = firebase.database().ref();
 
+
         usersRef.push(newTrip)
         this.state.photo = ''
         /* -------- */
+
+
     }
 
     removeEntry(key){
@@ -153,6 +156,8 @@ export default class Inputs extends React.Component {
 // call the remove method
         const removeMe = firebase.database().ref(key);
         removeMe.remove();
+        const removePhoto = firebase.storage.ref();
+        removePhoto.remove();
     }
 
     ///////////////
@@ -248,23 +253,25 @@ export default class Inputs extends React.Component {
                             <summary>
                                 <h2>{allTravels.date}</h2>
                             </summary>
-                            <h3 className="sub-heading">Places Visited:</h3>
-                            <p className="para">{allTravels.places}</p>
-                            <h3 className="sub-heading">Description</h3>
-                            <p className="para">{allTravels.placesDescription}</p>
-                            <h3 className="sub-heading">Went With</h3>
-                            <p className="para">{allTravels.group}</p>
-                            <h3 className="sub-heading">Restaurants Tried</h3>
-                            <p className="para">{allTravels.restaurants}</p>
-                            <h3 className="sub-heading">Description</h3>
-                            <p className="para">{allTravels.resDescription}</p>
-                            <h3 className="sub-heading">HIghlights</h3>
-                            <p className="para">{allTravels.highlights}</p>
-                            <div>Photos:
-                                                <img src={allTravels.photo} alt="" />
+                            <div className="summary-content">
+                                <h3 className="sub-heading">Places Visited:</h3>
+                                <p className="para">{allTravels.places}</p>
+                                <h3 className="sub-heading">Description</h3>
+                                <p className="para">{allTravels.placesDescription}</p>
+                                <h3 className="sub-heading">Went With</h3>
+                                <p className="para">{allTravels.group}</p>
+                                <h3 className="sub-heading">Restaurants Tried</h3>
+                                <p className="para">{allTravels.restaurants}</p>
+                                <h3 className="sub-heading">Description</h3>
+                                <p className="para">{allTravels.resDescription}</p>
+                                <h3 className="sub-heading">HIghlights</h3>
+                                <p className="para">{allTravels.highlights}</p>
+                                <div>Photos:
+                                    <img src={allTravels.photo} alt="" />
+                                </div>
+                                <button onClick={() => this.removeEntry(travels)}>Delete</button> 
                             </div>
-                            <button onClick={() => this.removeEntry(travels)}>Delete</button> */
-                                    </details>
+                        </details>
                     )
                 })}
             </div>
@@ -272,10 +279,10 @@ export default class Inputs extends React.Component {
         return (
             <div className="main-input-container">
                 <form className="greeting-container">
-                    <label  htmlFor="add">add memories</label>
-                    <input name="description" type="radio" className="add" id="add" onChange={this.showInputs}/> 
-                    <label htmlFor="view">view memories</label>
-                    <input name="description" type="radio" className="view" id="add" onChange={this.showMemories}/>
+                    <label htmlFor="view">View memories</label>
+                    <input name="view" type="radio" id="view" onChange={this.showInputs}/> 
+                    <label htmlFor="add">Add memories</label>
+                    <input name="view" type="radio" id="add" onChange={this.showMemories}/>
                 </form>
                 {this.state.showForm ? contentForm : contentDisplay}
             </div>

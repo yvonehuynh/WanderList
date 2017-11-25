@@ -18,9 +18,9 @@ export default class ViewContents extends React.Component {
     render(){
         return (
             <div className="greeting-container">
-                 <label htmlFor="add">add memories</label>
+                <label htmlFor="add">view memories</label>
                 <input type="radio" className="add" id="add" onChange={()=> this.state.showForm}/>
-                 <label htmlFor="view">view memories</label>
+                 <label htmlFor="view">Add memories</label>
                 <input type="radio" className="view" id="add"/>
             </div>
         )

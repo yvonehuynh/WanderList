@@ -10,11 +10,13 @@
 
 h2 {
     font-size: 3rem;
+    margin: 0;
 }
 
 .sub-heading {
     font-size: 1.6rem;
     color: $desHeading;
+    margin: 0;
 }
 
 .para {
@@ -33,4 +35,20 @@ h2 {
 
 .summary-container {
         background: $contentBackground;
+}
+
+details {
+    display: flex;
+}
+
+summary {
+    background: $summaryColor;
+}
+
+.summary-content {
+    width: 80%;
+    position: relative;
+    left: 20%;
+    border: 3px solid $summaryColor;
+    background: rgb(255, 215, 136);
 }
