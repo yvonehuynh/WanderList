@@ -1,15 +1,13 @@
 @import "./colors";
 
 .contents-container {
-    border: 3px solid $border;
     margin: 0 auto;
-    padding: 15px;
-        width: 75%;
-    margin-top: 50px;
+        width: 100%;
+    margin-top: 24px;
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 1.7rem;
     margin: 0;
 }
 
@@ -17,6 +15,7 @@ h2 {
     font-size: 1.6rem;
     color: $desHeading;
     margin: 0;
+    padding: 7px;
 }
 
 .para {
@@ -43,12 +42,29 @@ details {
 
 summary {
     background: $summaryColor;
+    position: relative;
+    width:20%;
+}
+
+summary:active, details:active {
+    border: none;
 }
 
 .summary-content {
-    width: 80%;
+    width: 70%;
     position: relative;
-    left: 20%;
-    border: 3px solid $summaryColor;
+    left: 26%;
     background: rgb(255, 215, 136);
+    margin-bottom: 10px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 9px;
+    border: 1px solid $border;
+}
+
+.image-holder {
+    width: 200px;
+    height: 250px;
+    border: 2px solid red;
 }

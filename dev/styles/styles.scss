@@ -11,13 +11,11 @@ html {
 }
 
 body {
-/*     background: $bodyBackground; */
     background: url("../assets/simon-peel-372405.jpg");
     background-repeat: no-repeat;
     background-position: 20%;
     background-size: cover;
     height: 100vh;
-    overflow: hidden;
 }
 
 .wrapper {
@@ -27,7 +25,17 @@ body {
 
 h1 {
     font-size: 4rem;
+    display: block;
+/*     background: rgba(11, 149, 114, 0.5); */
+    margin: 20px auto;
+    color: white;
+    text-align: center;
+    width: 32%;
+    padding:10px;
 }
 
+img {
+    max-width: 100%;
+}
 
 // Background Photo by simon peel on Unsplash

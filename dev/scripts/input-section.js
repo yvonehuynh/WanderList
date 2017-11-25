@@ -230,7 +230,7 @@ export default class Inputs extends React.Component {
 
                         <details>
                             <summary>
-                                <h2>{allTravels.date}</h2>
+                                <h2>{allTravels.location} {allTravels.date}</h2>
                             </summary>
                             <div className="summary-content">
                                 <h3 className="sub-heading">Places Visited:</h3>
@@ -245,7 +245,7 @@ export default class Inputs extends React.Component {
                                 <p className="para">{allTravels.resDescription}</p>
                                 <h3 className="sub-heading">HIghlights</h3>
                                 <p className="para">{allTravels.highlights}</p>
-                                <div>Photos:
+                                <div className="image-holder">:
                                     <img src={allTravels.photo} alt="" />
                                 </div>
                                 <button onClick={() => this.removeEntry(travels)}>Delete</button> 
