@@ -51,7 +51,7 @@ summary:active, details:active {
 }
 
 .summary-content {
-    width: 70%;
+    width: 64%;
     position: relative;
     left: 26%;
     background: rgb(255, 215, 136);
@@ -59,7 +59,6 @@ summary:active, details:active {
     padding: 10px;
     position: absolute;
     z-index: 1;
-    bottom: 253px;
     border: 1px solid $border;
 }
 
@@ -93,6 +92,6 @@ summary:active, details:active {
 }
 
 .travel-summary {
-    width: 75%;
+    width: 65%;
     flex-shrink: 2;
 }

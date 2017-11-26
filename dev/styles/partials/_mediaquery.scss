@@ -1,0 +1,94 @@
+
+
+@media only screen and (max-width: 1118px) {
+    // forms
+    .form-input {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 888px) {
+    // forms
+    .form-input {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    // forms
+    .wrapper {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .summary-content {
+        width: 100%;
+        left: 0;
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 675px) {
+    // forms
+    .form-container {
+        height: 505px;
+    }
+}
+
+@media only screen and (max-width: 633px) {
+    // forms
+    .form-container {
+        height: 527px;
+    }
+
+    .form-input {
+        height: 527px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    // forms
+    .form-container {
+        flex-wrap: nowrap;
+        height: 866px;
+    }
+
+    fieldset {
+        width: 100%;
+    }
+
+    .form-input {
+        height: 584px;
+        overflow: auto;
+    }
+
+    h1 {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+    // content
+    .travel-info {
+        flex-direction: column;
+    }
+
+    .travel-summary {
+        width: 100%;
+    }
+
+    .contents-container {
+        overflow: auto;
+        max-height: 600px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    // greeting
+    .greeting-container {
+        label {
+            font-size: 2rem;
+        }
+    }
+}

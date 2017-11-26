@@ -179,7 +179,7 @@ export default class Inputs extends React.Component {
                 <div className="form-container">
                     <fieldset className="date-location-input">
                         <label htmlFor="location-travelled">Destination</label>
-                        <input name="location" type="text" id="location-travelled" value={this.state.location} onChange={this.handleChange} />
+                        <input name="location" type="text" id="location-travelled" maxLength="26" value={this.state.location} onChange={this.handleChange} />
                         <label htmlFor="date-travelled">Date</label>
                         <input type="date" name="date" required="true" value={this.state.date} onChange={this.handleChange} />
                     </fieldset>
@@ -191,27 +191,27 @@ export default class Inputs extends React.Component {
 
                     <fieldset className="places-input">
                         <label htmlFor="places-visited">Places You Visited</label>
-                        <input name="places" type="text" id="places-visited1" value={this.state.places} onChange={this.handleChange} />
+                        <input name="places" type="text" id="places-visited1" maxLength="40" value={this.state.places} onChange={this.handleChange} />
                     </fieldset>
 
                     <fieldset>
                         <label htmlFor="places-visited-textarea1">Places Description</label>
-                        <textarea name="placesDescription" id="places-visited-textarea1" value={this.state.placesDescription} onChange={this.handleChange}></textarea>
+                        <textarea name="placesDescription" id="places-visited-textarea1" maxLength="200" value={this.state.placesDescription} onChange={this.handleChange}></textarea>
                     </fieldset>
 
                     <fieldset className="restaurants-input">
                         <label htmlFor="res-visited">Restuarants / Food Tried</label>
-                        <input name="restaurants" type="text" id="res-visited" value={this.state.restaurants} onChange={this.handleChange} />
+                        <input name="restaurants" type="text" id="res-visited" maxLength="26" value={this.state.restaurants} onChange={this.handleChange} />
                     </fieldset>
 
                     <fieldset>
                         <label htmlFor="res-textarea">Restaurant Descirption</label>
-                        <textarea name="resDescription" id="res-textarea" value={this.state.resDescription} onChange={this.handleChange}></textarea>
+                        <textarea name="resDescription" id="res-textarea" maxLength="200" value={this.state.resDescription} onChange={this.handleChange}></textarea>
                     </fieldset>
 
                     <fieldset className="highlights-input">
                         <label htmlFor="highlights">Highlights of Trip</label>
-                        <textarea name="highlights" id="highlight-textarea" cols="30" rows="10" value={this.state.highlights} onChange={this.handleChange}></textarea>
+                        <textarea name="highlights" id="highlight-textarea" maxLength="200" value={this.state.highlights} onChange={this.handleChange}></textarea>
                         {/* ------------------- */}
                         <input type="file" accept="image/*" onChange={this.uploadPhoto} />
                         
