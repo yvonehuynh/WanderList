@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Inputs from "./input-section";
-import ViewContents from "./view-contents";
 
 class App extends React.Component {
   constructor(){
