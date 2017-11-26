@@ -59,12 +59,28 @@ summary:active, details:active {
     padding: 10px;
     position: absolute;
     z-index: 1;
-    bottom: 9px;
+    bottom: 3px;
     border: 1px solid $border;
 }
 
 .image-holder {
     width: 200px;
     height: 250px;
-    border: 2px solid red;
+    margin: 0 auto;
+    transition: all 1.4s ease;
+}
+
+.image-holder:hover, .image-holder:active {
+    transform: scale(1.5);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    .delete-button {
+        background: $buttonColor;
+        color: white;
+        border: 1px solid white;
+        padding: 5px 10px;
+    }
 }

@@ -145,7 +145,7 @@ export default class Inputs extends React.Component {
             const urlObject = storageRef.getDownloadURL().then((data) => {
                 console.log('photo upload DONE')
                 this.setState({
-                    photo: data,
+                    photo: data
                 })
             })
         });
@@ -214,9 +214,11 @@ export default class Inputs extends React.Component {
                         <textarea name="highlights" id="highlight-textarea" cols="30" rows="10" value={this.state.highlights} onChange={this.handleChange}></textarea>
                         {/* ------------------- */}
                         <input type="file" accept="image/*" onChange={this.uploadPhoto} />
+                        
                         {/* -------------------- */}
                     </fieldset>
                 </div>
+         
                 <input type="submit" />
             </form>
         );
@@ -233,6 +235,10 @@ export default class Inputs extends React.Component {
                                 <h2>{allTravels.location} {allTravels.date}</h2>
                             </summary>
                             <div className="summary-content">
+                                <div className="controls">
+                                    <h2>{allTravels.location} {allTravels.date}</h2>
+                                    <button className="delete-button" onClick={() => this.removeEntry(travels)}>Delete</button> 
+                                </div>
                                 <h3 className="sub-heading">Places Visited:</h3>
                                 <p className="para">{allTravels.places}</p>
                                 <h3 className="sub-heading">Description</h3>
@@ -248,7 +254,7 @@ export default class Inputs extends React.Component {
                                 <div className="image-holder">:
                                     <img src={allTravels.photo} alt="" />
                                 </div>
-                                <button onClick={() => this.removeEntry(travels)}>Delete</button> 
+                               
                             </div>
                         </details>
                     )
