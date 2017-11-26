@@ -92,7 +92,6 @@ export default class Inputs extends React.Component {
             resDescription: this.state.resDescription,
             highlights: this.state.highlights,
             photo: this.state.photo
-
         }
         const travelDate = this.state["date"];  
         this.setState({
@@ -110,24 +109,24 @@ export default class Inputs extends React.Component {
         })
 
         const usersRef = firebase.database().ref();
-
-
         usersRef.push(newTrip)
         this.state.photo = ''
     }
 
+    // delete entries
     removeEntry(key){
         const removeMe = firebase.database().ref(key);
         removeMe.remove();
     }
 
+    // upload photos
     uploadPhoto(e) {
         this.setState({
-            show: true
+            showImage: true
         })
-        let file = e.target.files[0];
-        const storageRef = firebase.storage().ref('photos/' + file.name);
-        const task = storageRef.put(file).then(() => {
+        let image = e.target.files[0];
+        const storageRef = firebase.storage().ref('photos/' + image.name);
+        const imageLink = storageRef.put(image).then(() => {
             const urlObject = storageRef.getDownloadURL().then((data) => {
                 this.setState({
                     photo: data
