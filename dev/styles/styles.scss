@@ -39,6 +39,19 @@ img {
     max-width: 100%;
 }
 
+.component-heading {
+    font-size: 2rem;
+    text-align: center;
+    display: block;
+}
 
+.form {
+    color: rgb(11, 149, 114);
+}
+
+.view {
+    color: white;
+}
 @import "partials/mediaquery";
+
 // Background Photo by simon peel on Unsplash

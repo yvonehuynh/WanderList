@@ -1,19 +1,7 @@
-// Main Inputs Page
-// inputs include:
-/* 
-- date
-- location
-- people you went with
-- restaurants visited
-- places visited- food tried
-- highlights
-- photos (?)
- */
-
 import React from "react";
 import reactDOM from "react-dom";
-import ViewContent from "./view-contents";
 
+// Styles variable
 const styles = {
     transition: 'opacity 2.3s ease-out'
 }
@@ -163,6 +151,7 @@ export default class Inputs extends React.Component {
     render() {
         let contentForm = (
             <form action="" className="form-input" onSubmit={this.addTravels} style={{styles, opacity: this.state.opacity}}>
+                <h2 className="component-heading form">Add Your New Memories</h2>
                 <div className="form-container">
                     <fieldset className="date-location-input">
                         <label htmlFor="location-travelled">Destination</label>
@@ -208,11 +197,11 @@ export default class Inputs extends React.Component {
         );
         let contentDisplay = (
             <div className="contents-container" style={{ styles, opacity: this.state.opacity }}>
+                <h2 className="component-heading view">View Your Memories</h2>
                 {Object.keys(this.state.allTrips).map((travels, i) => {
                     const allTravels = this.state.allTrips[travels];
                     return (
-
-                        <details>
+                       <details>
                             <summary>
                                 <h2>{allTravels.location} {allTravels.date}</h2>
                             </summary>
