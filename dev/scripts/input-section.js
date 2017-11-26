@@ -239,20 +239,24 @@ export default class Inputs extends React.Component {
                                     <h2>{allTravels.location} {allTravels.date}</h2>
                                     <button className="delete-button" onClick={() => this.removeEntry(travels)}>Delete</button> 
                                 </div>
-                                <h3 className="sub-heading">Places Visited:</h3>
-                                <p className="para">{allTravels.places}</p>
-                                <h3 className="sub-heading">Description</h3>
-                                <p className="para">{allTravels.placesDescription}</p>
-                                <h3 className="sub-heading">Went With</h3>
-                                <p className="para">{allTravels.group}</p>
-                                <h3 className="sub-heading">Restaurants Tried</h3>
-                                <p className="para">{allTravels.restaurants}</p>
-                                <h3 className="sub-heading">Description</h3>
-                                <p className="para">{allTravels.resDescription}</p>
-                                <h3 className="sub-heading">HIghlights</h3>
-                                <p className="para">{allTravels.highlights}</p>
-                                <div className="image-holder">:
-                                    <img src={allTravels.photo} alt="" />
+                                <div className="travel-info">
+                                    <div className="travel-summary">
+                                        <h3 className="sub-heading">Places Visited:</h3>
+                                        <p className="para">{allTravels.places}</p>
+                                        <h3 className="sub-heading">Description</h3>
+                                        <p className="para">{allTravels.placesDescription}</p>
+                                        <h3 className="sub-heading">Went With</h3>
+                                        <p className="para">{allTravels.group}</p>
+                                        <h3 className="sub-heading">Restaurants Tried</h3>
+                                        <p className="para">{allTravels.restaurants}</p>
+                                        <h3 className="sub-heading">Description</h3>
+                                        <p className="para">{allTravels.resDescription}</p>
+                                        <h3 className="sub-heading">HIghlights</h3>
+                                        <p className="para">{allTravels.highlights}</p>
+                                    </div>
+                                    <div className="image-holder">:
+                                        <img src={allTravels.photo} alt="" />
+                                    </div>
                                 </div>
                                
                             </div>

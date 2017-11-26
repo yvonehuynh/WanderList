@@ -3,7 +3,6 @@
 .form-input {
     width: 71%;
     margin: 0 auto;
-    padding: 15px;
     border: 2px solid $border;
     height: 493px;
     background: $contentBackground;
@@ -13,8 +12,10 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 485px;
+    height: 480px;
     width: 100%;
+    padding: 15px;
+    align-items: center;
 }
 
 fieldset {
@@ -31,12 +32,12 @@ input, textarea {
 }
 
 input {
-    width: 45%;
+    width: 100%;
 }
 
 textarea {
     height: 134px;
-    width: 276px;
+    width: 100%;
 }
 
 label {
@@ -49,7 +50,7 @@ input[type=submit] {
     background: rgb(11, 149, 114);
     color: white;
     width: 100%;
-    margin-top: 8px;
+    margin-top: 15px;
     padding: 10px 0;
 }
 
