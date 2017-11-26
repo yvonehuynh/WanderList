@@ -83,12 +83,53 @@
         max-height: 600px;
     }
 }
+@media only screen and (max-width: 384px) {
+    .greeting-container {
+        label {
+        font-size: 2rem;
+        color: white;
+    }
+
+    // form
+    .form-input {
+        height: 370px;
+    }
+}
 
 @media only screen and (max-width: 380px) {
     // greeting
     .greeting-container {
         label {
             font-size: 2rem;
+        }
+    }
+
+    // form
+    .form-input {
+        height: 477px;
+    }
+
+    .contents-container {
+        max-height: 477px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    // form
+    .form-input {
+        height: 377px;
+    }
+
+    .contents-container {
+        max-height: 377px;
+    }
+}
+
+@media only screen and (max-width: 310px) {
+    // greeting
+    .greeting-container {
+        label {
+            font-size: 1.5rem;
         }
     }
 }
