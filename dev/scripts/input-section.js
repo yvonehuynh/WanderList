@@ -33,6 +33,7 @@ firebase.initializeApp(config);
 export default class Inputs extends React.Component {
     constructor(){
         super();
+        // default states
         this.state ={
                 location: '',
                 date: '',
@@ -82,6 +83,7 @@ export default class Inputs extends React.Component {
 // Submit Form
     addTravels(e){
         e.preventDefault();
+        // update the state with what was inputted
         const newTrip = {
             location: this.state.location,
             date: this.state.date,
@@ -93,7 +95,8 @@ export default class Inputs extends React.Component {
             highlights: this.state.highlights,
             photo: this.state.photo
         }
-        const travelDate = this.state["date"];  
+        const travelDate = this.state["date"]; 
+        // empty the form when submitted 
         this.setState({
             location: '',
             date: '',
@@ -133,14 +136,16 @@ export default class Inputs extends React.Component {
                 })
             })
         });
-
     }
+
+    // Show Travel Details
     showMemories() {
         this.setState({
             showForm: true,
         })
     }
 
+    // Show Form
     showInputs(){
         this.setState({
             showForm: false,
@@ -148,6 +153,7 @@ export default class Inputs extends React.Component {
         })
     }
 
+    // Styles
     onHide(){
         this.setState={
             opacity: 0

@@ -14,11 +14,8 @@ class App extends React.Component {
     render() {
       return (
         <div className="wrapper">
-
           <h1>WanderList</h1>
-
           <Inputs />
-{/*           {this.state.showForm ? <Inputs /> : <ViewContents data={this.showForm} /> } */}
         </div>
       )
     }
