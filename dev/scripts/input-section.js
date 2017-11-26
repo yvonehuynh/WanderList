@@ -61,8 +61,6 @@ export default class Inputs extends React.Component {
         const dbRef = firebase.database().ref();
         
         dbRef.on("value",(firebaseData) => {
-            console.log(firebaseData.val());
-
             const travelArray = [];
             const travelData = firebaseData.val();
 
@@ -76,7 +74,6 @@ export default class Inputs extends React.Component {
         })
      }
     handleChange(e){
-        console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value,
         })
@@ -98,7 +95,6 @@ export default class Inputs extends React.Component {
 
         }
         const travelDate = this.state["date"];  
-         /* -------- */
         this.setState({
             location: '',
             date: '',
@@ -118,24 +114,14 @@ export default class Inputs extends React.Component {
 
         usersRef.push(newTrip)
         this.state.photo = ''
-        /* -------- */
-
     }
 
     removeEntry(key){
-        console.log(key)
-// ref to location of that object in the database
-// call the remove method
         const removeMe = firebase.database().ref(key);
         removeMe.remove();
-        const removePhoto = firebase.storage.ref();
-        removePhoto.remove();
     }
 
-    ///////////////
-
     uploadPhoto(e) {
-        console.log('photo upload begin')
         this.setState({
             show: true
         })
@@ -143,7 +129,6 @@ export default class Inputs extends React.Component {
         const storageRef = firebase.storage().ref('photos/' + file.name);
         const task = storageRef.put(file).then(() => {
             const urlObject = storageRef.getDownloadURL().then((data) => {
-                console.log('photo upload DONE')
                 this.setState({
                     photo: data
                 })
@@ -152,20 +137,17 @@ export default class Inputs extends React.Component {
 
     }
     showMemories() {
-        console.log("HELLO THERE");
         this.setState({
             showForm: true,
         })
     }
 
     showInputs(){
-        console.log("I AM HERE");
         this.setState({
             showForm: false,
             opacity: 1,
         })
     }
-    //////////////
 
     onHide(){
         this.setState={
@@ -212,10 +194,7 @@ export default class Inputs extends React.Component {
                     <fieldset className="highlights-input">
                         <label htmlFor="highlights">Highlights of Trip</label>
                         <textarea name="highlights" id="highlight-textarea" maxLength="200" value={this.state.highlights} onChange={this.handleChange}></textarea>
-                        {/* ------------------- */}
                         <input type="file" accept="image/*" onChange={this.uploadPhoto} />
-                        
-                        {/* -------------------- */}
                     </fieldset>
                 </div>
          
@@ -225,8 +204,6 @@ export default class Inputs extends React.Component {
         let contentDisplay = (
             <div className="contents-container" style={{ styles, opacity: this.state.opacity }}>
                 {Object.keys(this.state.allTrips).map((travels, i) => {
-
-                    console.log(this.state.allTrips[travels].group, "hello")
                     const allTravels = this.state.allTrips[travels];
                     return (
 
@@ -278,11 +255,4 @@ export default class Inputs extends React.Component {
         );
     }
 }
-
-// app needs a method that is reponsible for setting the state is true or false
-
-// this method should be called on change, of radio buttons that live in the viewcontent
-
-// pass the method as a prop to the view content compoenent
-// inside viewcontent, we have an onchange listener on the forms, that calls this prop and passes the of what input is currently selected to the method which is on the app
 
