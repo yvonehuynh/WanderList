@@ -2,8 +2,11 @@
 
 .contents-container {
     margin: 0 auto;
-        width: 100%;
+    width: 100%;
     margin-top: 24px;
+    overflow: auto;
+    position: relative;
+    height: 500px;
 }
 
 h2 {

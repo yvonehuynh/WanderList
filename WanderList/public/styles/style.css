@@ -235,14 +235,11 @@ summary:active, details:active {
 
 .image-holder {
   width: 200px;
-  height: 250px;
+  height: 320px;
   margin: 0 auto;
   transition: all 1.4s ease;
   display: flex;
   align-items: center; }
-
-.image-holder:hover, .image-holder:active {
-  transform: scale(1.5); }
 
 .controls {
   display: flex;
