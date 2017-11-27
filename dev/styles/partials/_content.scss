@@ -54,7 +54,8 @@ summary:active, details:active {
     width: 64%;
     position: relative;
     left: 26%;
-    background: rgb(255, 215, 136);
+/*     background: rgb(255, 215, 136); */
+background: $contentBackground;
     margin-bottom: 10px;
     padding: 10px;
     position: absolute;
@@ -94,4 +95,9 @@ summary:active, details:active {
 .travel-summary {
     width: 65%;
     flex-shrink: 2;
+}
+
+.destination {
+    color: $buttonColor;
+    margin-left: 10px;
 }

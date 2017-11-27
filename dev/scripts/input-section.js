@@ -203,7 +203,7 @@ export default class Inputs extends React.Component {
                     return (
                        <details>
                             <summary>
-                                <h2>{allTravels.location} {allTravels.date}</h2>
+                                <h2><span className="destination">{allTravels.location}</span> {allTravels.date}</h2>
                             </summary>
                             <div className="summary-content">
                                 <div className="controls">
